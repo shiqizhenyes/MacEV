@@ -1,21 +1,29 @@
+# Homebrew
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-# export CMAKE=/Applications/CMake.app/Contents
-export ORACLE_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home
+export HOMEBREW_NO_AUTO_UPDATE=true
+export PATH=/usr/local/sbin:$PATH
+# cmake
+export CMAKE=/Applications/CMake.app/Contents
+export PATH=$CMAKE/bin:$PATH
+
+# export ORACLE_JDK=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
+export JDK_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
 # export JDK_11=/usr/local/Cellar/openjdk@11/11.0.6+10/libexec/openjdk.jdk/Contents/Home
 # export JDK_13=/usr/local/Cellar/openjdk/13.0.2+8_2/libexec/openjdk.jdk/Contents/Home
 # export JDK_14=/usr/local/Cellar/openjdk@14/Contents/Home
-export JAVA_HOME=$ORACLE_JDK
+export JAVA_HOME=$JDK_8
+export CPPFLAGS=-I$JAVA_HOME/include
 export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
 export PATH=$JAVA_HOME/bin:$PATH:.
 # export PATH=~/.npm-global/bin:$PATH
-# export PATH=$CMAKE/bin:$PATH
-export HOMEBREW_NO_AUTO_UPDATE=true
-# function defaultJdk() {
-#     export JAVA_HOME=$ORACLE_JDK
-#     export CLASSPATH=$ORACLE_JDK/lib/tools.jar:$ORACLE_JDK/lib/dt.jar:.
-#     export PATH=$ORACLE_JDK/bin:$PATH:.
-# }
-# alias jdk8="defaultJdk"
+
+function defaultJdk() {
+    export JAVA_HOME=$JDK_8
+    export CPPFLAGS=-I$JAVA_HOME/include
+    export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
+    export PATH=$JAVA_HOME/bin:$PATH:.
+}
+alias jdk8="defaultJdk"
 
 # function setJdk11() {
 #     export JAVA_HOME=$JDK_11
@@ -76,7 +84,8 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 set PUB_HOSTED_URL=$PUB_HOSTED_URL
 set FLUTTER_STORAGE_BASE_URL=$FLUTTER_STORAGE_BASE_URL
 export FLUTTER_HOME=~/Library/flutter
-export PATH=$PATH:$FLUTTER_HOME/bin
+export DART_HOME=$FLUTTER_HOME/bin/cache/dart-sdk
+export PATH=$PATH:$FLUTTER_HOME/bin:$DART_HOME/bin
 
 function flutterStable() {
     fromPath=$PWD
