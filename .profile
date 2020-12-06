@@ -50,7 +50,7 @@ alias jdk8="defaultJdk"
 
 function proxyOn() {
     export http_proxy="http://127.0.0.1:1087"
-    export https_proxy="https_proxy=https://127.0.0.1:1087"
+    export https_proxy="https://127.0.0.1:1087"
     set http_proxy=$http_proxy
     set https_proxy=$https_proxy
 }
