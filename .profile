@@ -2,6 +2,9 @@
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 export HOMEBREW_NO_AUTO_UPDATE=true
 export PATH=/usr/local/sbin:$PATH
+# nexus
+export PATH=/opt/nexus/nexus/bin:$PATH
+
 # cmake
 export CMAKE=/Applications/CMake.app/Contents
 export PATH=$CMAKE/bin:$PATH
