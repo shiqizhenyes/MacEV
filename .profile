@@ -9,6 +9,8 @@ export PATH=/opt/nexus/nexus/bin:$PATH
 export CMAKE=/Applications/CMake.app/Contents
 export PATH=$CMAKE/bin:$PATH
 
+export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
+
 # export ORACLE_JDK=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
 export JDK_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
 # export JDK_11=/usr/local/Cellar/openjdk@11/11.0.6+10/libexec/openjdk.jdk/Contents/Home
@@ -80,7 +82,7 @@ export KOTLIN_HOME=~/Library/Kotlin
 export PATH=$PATH:$KOTLIN_HOME/kotlinc/bin
 export ANDROID_HOME=~/Library/Android/sdk
 export NDK_HOME=$ANDROID_HOME/ndk-bundle
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/emulator/qemu/darwin-x86_64:$NDK_HOME
 export ENABLE_FLUTTER_DESKTOP=true
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
@@ -89,6 +91,19 @@ set FLUTTER_STORAGE_BASE_URL=$FLUTTER_STORAGE_BASE_URL
 export FLUTTER_HOME=~/Library/flutter
 export DART_HOME=$FLUTTER_HOME/bin/cache/dart-sdk
 export PATH=$PATH:$FLUTTER_HOME/bin:$DART_HOME/bin
+
+function flutterStable1_x() {
+    fromPath=$PWD
+    cd $HOME/Library
+    if [ -L flutter ]
+    then
+        rm flutter
+    fi
+    ln -s FlutterStable1.x flutter
+    cd $fromPath
+}
+
+alias flutterStable1_x="flutterStable1_x"
 
 function flutterStable() {
     fromPath=$PWD
