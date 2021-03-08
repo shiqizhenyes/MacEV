@@ -78,11 +78,18 @@ function gitProxyOff() {
 }
 alias gitProxyOff="gitProxyOff"
 
+# kotlin
 export KOTLIN_HOME=~/Library/Kotlin
 export PATH=$PATH:$KOTLIN_HOME/kotlinc/bin
+
+# android sdk
 export ANDROID_HOME=~/Library/Android/sdk
 export NDK_HOME=$ANDROID_HOME/ndk-bundle
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/emulator/qemu/darwin-x86_64:$NDK_HOME
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/emulator
+
+# flutter
 export ENABLE_FLUTTER_DESKTOP=true
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
