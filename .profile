@@ -106,7 +106,7 @@ function flutterStable1_x() {
     then
         rm flutter
     fi
-    ln -s FlutterStable1.x flutter
+    ln -snf FlutterStable1.x flutter
     cd $fromPath
 }
 
@@ -119,7 +119,7 @@ function flutterStable() {
     then
         rm flutter
     fi
-    ln -s FlutterStable flutter
+    ln -snf FlutterStable flutter
     cd $fromPath
 }
 
@@ -132,7 +132,7 @@ unction flutterDev() {
     then
         rm flutter
     fi
-    ln -s FlutterDev flutter
+    ln -snf FlutterDev flutter
     cd $fromPath
 }
 
