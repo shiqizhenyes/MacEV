@@ -1,7 +1,5 @@
-# Homebrew
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-export HOMEBREW_NO_AUTO_UPDATE=true
-export PATH=/usr/local/sbin:$PATH
+
+# export PATH=/usr/local/sbin:$PATH
 # nexus
 export PATH=/opt/nexus/nexus/bin:$PATH
 
@@ -138,17 +136,22 @@ function flutterDev() {
 
 alias flutterDev="flutterDev"
 
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
+export HOMEBREW_NO_AUTO_UPDATE=true
+
+# Homebrew 清华源
 function brewTsingHua() {
-    git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+    export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+    git -C "$(brew --repo)" remote set-url origin http://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
     BREW_TAPS="$(brew tap)"
     for tap in core cask{,-fonts,-drivers,-versions}; do
         if echo "$BREW_TAPS" | grep -qE "^homebrew/${tap}\$"; then
             # 将已有 tap 的上游设置为本镜像并设置 auto update
             # 注：原 auto update 只针对托管在 GitHub 上的上游有效
-            git -C "$(brew --repo homebrew/${tap})" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-${tap}.git
+            git -C "$(brew --repo homebrew/${tap})" remote set-url origin http://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-${tap}.git
             git -C "$(brew --repo homebrew/${tap})" config homebrew.forceautoupdate true
         else   # 在 tap 缺失时自动安装（如不需要请删除此行和下面一行）
-            brew tap --force-auto-update homebrew/${tap} https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-${tap}.git
+            brew tap --force-auto-update homebrew/${tap} http://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-${tap}.git
         fi
     done
     brew update-reset
@@ -156,7 +159,29 @@ function brewTsingHua() {
 
 alias brewTsingHua="brewTsingHua"
 
+# Homebrew 中科大源
+function brewUstc() {
+    export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
+    git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+    BREW_TAPS="$(brew tap)"
+    for tap in core cask{,-fonts,-drivers,-versions}; do
+        if echo "$BREW_TAPS" | grep -qE "^homebrew/${tap}\$"; then
+            # 将已有 tap 的上游设置为本镜像并设置 auto update
+            # 注：原 auto update 只针对托管在 GitHub 上的上游有效
+            git -C "$(brew --repo homebrew/${tap})" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-${tap}.git
+            git -C "$(brew --repo homebrew/${tap})" config homebrew.forceautoupdate true
+        else   # 在 tap 缺失时自动安装（如不需要请删除此行和下面一行）
+            brew tap --force-auto-update homebrew/${tap} http://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-${tap}.git
+        fi
+    done
+    brew update-reset
+}
+
+alias brewUstc="brewUstc"
+
+
 function brewRecovery() {
+    unset HOMEBREW_BOTTLE_DOMAIN
     git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git
 
     # 以下针对 macOS 系统上的 Homebrew
