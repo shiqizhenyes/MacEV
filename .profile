@@ -11,17 +11,17 @@ export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 
 # export ORACLE_JDK=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
 export JDK_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
-# export JDK_11=/usr/local/Cellar/openjdk@11/11.0.6+10/libexec/openjdk.jdk/Contents/Home
+export JDK_11=/usr/local/opt/openjdk@11/libexec/openjdk.jdk/Contents/Home
 # export JDK_13=/usr/local/Cellar/openjdk/13.0.2+8_2/libexec/openjdk.jdk/Contents/Home
 # export JDK_14=/usr/local/Cellar/openjdk@14/Contents/Home
-export JAVA_HOME=$JDK_8
+export JAVA_HOME=$JDK_11
 export CPPFLAGS=-I$JAVA_HOME/include
 export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
 export PATH=$JAVA_HOME/bin:$PATH:.
 # export PATH=~/.npm-global/bin:$PATH
 
 function defaultJdk() {
-    export JAVA_HOME=$JDK_8
+    export JAVA_HOME=$JDK_11
     export CPPFLAGS=-I$JAVA_HOME/include
     export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
     export PATH=$JAVA_HOME/bin:$PATH:.
