@@ -1,11 +1,9 @@
-
-# export PATH=/usr/local/sbin:$PATH
 # nexus
-export PATH=/opt/nexus/nexus/bin:$PATH
+export PATH=$PATH:/opt/nexus/nexus/bin
 
 # cmake
 export CMAKE=/Applications/CMake.app/Contents
-export PATH=$CMAKE/bin:$PATH
+export PATH=$PATH:$CMAKE/bin
 
 export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 
@@ -17,14 +15,14 @@ export JDK_11=/usr/local/opt/openjdk@11/libexec/openjdk.jdk/Contents/Home
 export JAVA_HOME=$JDK_11
 export CPPFLAGS=-I$JAVA_HOME/include
 export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
-export PATH=$JAVA_HOME/bin:$PATH:.
-# export PATH=~/.npm-global/bin:$PATH
+export PATH=$PATH:$JAVA_HOME/bin
+export PATH=$HOME/.npm-global/bin:$PATH
 
 function defaultJdk() {
     export JAVA_HOME=$JDK_11
     export CPPFLAGS=-I$JAVA_HOME/include
     export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
-    export PATH=$JAVA_HOME/bin:$PATH:.
+    export PATH=$PATH:$JAVA_HOME/bin
 }
 alias jdk8="defaultJdk"
 
@@ -93,45 +91,40 @@ export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 set PUB_HOSTED_URL=$PUB_HOSTED_URL
 set FLUTTER_STORAGE_BASE_URL=$FLUTTER_STORAGE_BASE_URL
-export FLUTTER_HOME=~/Library/flutter
+export FLUTTER_HOME=$HOME/Library/FlutterStable
 export DART_HOME=$FLUTTER_HOME/bin/cache/dart-sdk
+export PATH_TEMP=$PATH
 export PATH=$PATH:$FLUTTER_HOME/bin:$DART_HOME/bin
 
 function flutterStable1_x() {
-    fromPath=$PWD
-    cd $HOME/Library
-    if [ -L flutter ]
-    then
-        rm flutter
-    fi
-    ln -snf FlutterStable1.x flutter
-    cd $fromPath
+    unset FLUTTER_HOME
+    unset DART_HOME
+    export FLUTTER_HOME=$Home/Library/FlutterStable1.x
+    export DART_HOME=$FLUTTER_HOME/bin/cache/dart-sdk
+    export PATH=$PATH_TEMP
+    export PATH=$PATH:$FLUTTER_HOME/bin:$DART_HOME/bin
 }
 
 alias flutterStable1_x="flutterStable1_x"
 
 function flutterStable() {
-    fromPath=$PWD
-    cd $HOME/Library
-    if [ -L flutter ]
-    then
-        rm flutter
-    fi
-    ln -snf FlutterStable flutter
-    cd $fromPath
+    unset FLUTTER_HOME
+    unset DART_HOME
+    export FLUTTER_HOME=$Home/Library/FlutterStable
+    export DART_HOME=$FLUTTER_HOME/bin/cache/dart-sdk
+    export PATH=$PATH_TEMP
+    export PATH=$PATH:$FLUTTER_HOME/bin:$DART_HOME/bin
 }
 
 alias flutterStable="flutterStable"
 
 function flutterDev() {
-    fromPath=$PWD
-    cd $HOME/Library
-    if [ -L flutter ]
-    then
-        rm flutter
-    fi
-    ln -snf FlutterDev flutter
-    cd $fromPath
+    unset FLUTTER_HOME
+    unset DART_HOME
+    export FLUTTER_HOME=$Home/Library/FlutterDev
+    export DART_HOME=$FLUTTER_HOME/bin/cache/dart-sdk
+    export PATH=$PATH_TEMP
+    export PATH=$PATH:$FLUTTER_HOME/bin:$DART_HOME/bin
 }
 
 alias flutterDev="flutterDev"
