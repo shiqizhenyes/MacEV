@@ -1,30 +1,38 @@
-# nexus
-export PATH=$PATH:/opt/nexus/nexus/bin
+# curl
+alias curl="curl -x http://127.0.0.1:1087"
 
-# cmake
-export CMAKE=/Applications/CMake.app/Contents
-export PATH=$PATH:$CMAKE/bin
+# node
+export NODE_HOME=/usr/local/bin
+export NODE_MODULES=/Users/zack/.local/lib/node_modules/bin
+export PATH=/Users/zack/.local/lib/node_modules/bin:$PATH
+
+# openssl
+export PATH=/usr/local/opt/openssl@1.1/bin:$PATH
+export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
+export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
+export PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig
 
 export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 
 # export ORACLE_JDK=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
-export JDK_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
-export JDK_11=/usr/local/opt/openjdk@11/libexec/openjdk.jdk/Contents/Home
+# export JDK_1_8=/usr/local/opt/openjdk@8/libexec/openjdk.jdk/Contents/Home
+# export INSTALL4J_JAVA_HOME=$JDK_1_8
+# export JDK_11=/usr/local/opt/openjdk@11/libexec/openjdk.jdk/Contents/Home
 # export JDK_13=/usr/local/Cellar/openjdk/13.0.2+8_2/libexec/openjdk.jdk/Contents/Home
 # export JDK_14=/usr/local/Cellar/openjdk@14/Contents/Home
-export JAVA_HOME=$JDK_11
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
 export CPPFLAGS=-I$JAVA_HOME/include
 export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
 export PATH=$PATH:$JAVA_HOME/bin
 export PATH=$HOME/.npm-global/bin:$PATH
 
-function defaultJdk() {
-    export JAVA_HOME=$JDK_11
-    export CPPFLAGS=-I$JAVA_HOME/include
-    export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
-    export PATH=$PATH:$JAVA_HOME/bin
-}
-alias jdk8="defaultJdk"
+# function defaultJdk() {
+#     export JAVA_HOME=$JDK_11
+#     export CPPFLAGS=-I$JAVA_HOME/include
+#     export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
+#     export PATH=$PATH:$JAVA_HOME/bin
+# }
+# alias jdk8="defaultJdk"
 
 # function setJdk11() {
 #     export JAVA_HOME=$JDK_11
@@ -75,11 +83,11 @@ function gitProxyOff() {
 alias gitProxyOff="gitProxyOff"
 
 # kotlin
-export KOTLIN_HOME=~/Library/Kotlin
+export KOTLIN_HOME=$HOME/Library/Kotlin
 export PATH=$PATH:$KOTLIN_HOME/kotlinc/bin
 
 # android sdk
-export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export NDK_HOME=$ANDROID_HOME/ndk-bundle
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
@@ -93,22 +101,22 @@ set PUB_HOSTED_URL=$PUB_HOSTED_URL
 set FLUTTER_STORAGE_BASE_URL=$FLUTTER_STORAGE_BASE_URL
 export PATH_TEMP=$PATH
 
-source $HOME/Projects/Git/MacEV/flutter_stable_1.x.sh
+source $HOME/Projects/Repositories/MacEV/flutter_stable.sh
 
 function flutterStable1_x() {
-    source $HOME/Projects/Git/MacEV/flutter_stable_1.x.sh
+    source $HOME/Projects/Repositories/MacEV/flutter_stable_1.x.sh
 }
 
 alias flutterStable1_x="flutterStable1_x"
 
 function flutterStable() {
-    source $HOME/Projects/Git/MacEV/flutter_stable.sh
+    source $HOME/Projects/Repositories/MacEV/flutter_stable.sh
 }
 
 alias flutterStable="flutterStable"
 
 function flutterDev() {
-    source $HOME/Projects/Git/MacEV/flutter_dev.sh
+    source $HOME/Projects/Repositories/MacEV/flutter_dev.sh
 }
 
 alias flutterDev="flutterDev"
@@ -180,13 +188,12 @@ alias brewRecovery="brewRecovery"
 # export PATH=/usr/local/opt/icu4c/bin:$PATH
 # export PATH=/usr/local/opt/icu4c/sbin:$PATH
 # export PATH=/usr/local/opt/sqlite/bin:$PATH
-# export PATH=/usr/local/opt/openssl@1.1/bin:$PATH
 # export CARGO_HOME=$HOME/.cargo
 # export RUS_HOME=$HOME/.rustup
 # export RUSTUP_DIST_SERVER=http://mirrors.ustc.edu.cn/rust-static
 # export RUSTUP_UPDATE_ROOT=http://mirrors.ustc.edu.cn/rust-static/rustup
 # export PATH=$CARGO_HOME/bin:$RUS_HOME:$PATH
-# export PATH=/usr/local/opt/openssl@1.1/bin:$PATH
+
 # export PATH=/usr/local/opt/tomcat@8/bin:$PATH
 # ulimit -S -n 20480
 
@@ -196,9 +203,12 @@ alias brewRecovery="brewRecovery"
 # export LDFLAGS=-L/usr/local/opt/sqlite/lib
 # export CPPFLAGS=-I/usr/local/opt/sqlite/include
 # export PKG_CONFIG_PATH=/usr/local/opt/sqlite/lib/pkgconfig
-# export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
-# export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
+
 # export LDFLAGS=-L/usr/local/opt/libffi/lib
 # export LDFLAGS=-L/usr/local/opt/readline/lib
 # export CPPFLAGS=-I/usr/local/opt/readline/include
 # export PKG_CONFIG_PATH=/usr/local/opt/readline/lib/pkgconfig
+
+#### FIG ENV VARIABLES ####
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
