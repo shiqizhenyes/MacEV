@@ -1,16 +1,33 @@
 # curl
 alias curl="curl -x http://127.0.0.1:1087"
 
+# gem & ruby
+export GEM_HOME=$HOME/.gem
+export RUBY_VERSION=2.6.0
+export RUBY_HOME=$GEM_HOME/ruby/$RUBY_VERSION
+export PATH=$GEM_HOME/bin:$RUBY_HOME/bin:$PATH
+
+# go
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/.local/opt/golang
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+
 # node
 export NODE_HOME=/usr/local/bin
-export NODE_MODULES=/Users/zack/.local/lib/node_modules/bin
-export PATH=/Users/zack/.local/lib/node_modules/bin:$PATH
+export NODE_MODULES=$HOME/.local/lib/node_modules/bin
+export PATH=$HOME/.local/lib/node_modules/bin:$PATH
 
 # openssl
-export PATH=/usr/local/opt/openssl@1.1/bin:$PATH
-export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
-export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
-export PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig
+export LDFLAGS="-L/Users/zack/Projects/Repositories/shadowsocks-libev/arm64 -L/usr/local/lib -L/usr/local/opt/expat/lib"
+export CFLAGS="-I/Users/zack/Projects/Repositories/shadowsocks-libev/arm64/include -I/usr/local/include -I/usr/local/opt/expat/include"
+export CPPFLAGS="-I/Users/zack/Projects/Repositories/shadowsocks-libev/arm64/include -I/usr/local/include -I/usr/local/opt/expat/include"
+
+
+# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 
@@ -94,6 +111,7 @@ export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 
 # flutter
+export NO_PROXY=localhost,127.0.0.1,::1
 export ENABLE_FLUTTER_DESKTOP=true
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
@@ -182,6 +200,8 @@ function brewRecovery() {
 }
 
 alias brewRecovery="brewRecovery"
+
+export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 # export PATH=$PATH:/usr/bin/python3
 # alias python=/usr/bin/python3
 # export PATH=$PATH:~/Go/bin
@@ -208,7 +228,3 @@ alias brewRecovery="brewRecovery"
 # export LDFLAGS=-L/usr/local/opt/readline/lib
 # export CPPFLAGS=-I/usr/local/opt/readline/include
 # export PKG_CONFIG_PATH=/usr/local/opt/readline/lib/pkgconfig
-
-#### FIG ENV VARIABLES ####
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
