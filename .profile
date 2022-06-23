@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/profile.pre.bash" ]] && . "$HOME/.fig/shell/profile.pre.bash"
 # curl
 alias curl="curl -x http://127.0.0.1:1087"
 
@@ -247,3 +249,6 @@ export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 # export LDFLAGS=-L/usr/local/opt/readline/lib
 # export CPPFLAGS=-I/usr/local/opt/readline/include
 # export PKG_CONFIG_PATH=/usr/local/opt/readline/lib/pkgconfig
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/profile.post.bash" ]] && . "$HOME/.fig/shell/profile.post.bash"
