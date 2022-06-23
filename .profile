@@ -19,9 +19,9 @@ export NODE_MODULES=$HOME/.local/lib/node_modules/bin
 export PATH=$HOME/.local/lib/node_modules/bin:$PATH
 
 # openssl
-export LDFLAGS="-L/Users/zack/Projects/Repositories/shadowsocks-libev/arm64 -L/usr/local/lib -L/usr/local/opt/expat/lib"
-export CFLAGS="-I/Users/zack/Projects/Repositories/shadowsocks-libev/arm64/include -I/usr/local/include -I/usr/local/opt/expat/include"
-export CPPFLAGS="-I/Users/zack/Projects/Repositories/shadowsocks-libev/arm64/include -I/usr/local/include -I/usr/local/opt/expat/include"
+# export LDFLAGS="-L/Users/zack/Projects/Repositories/shadowsocks-libev/arm64 -L/usr/local/lib -L/usr/local/opt/expat/lib"
+# export CFLAGS="-I/Users/zack/Projects/Repositories/shadowsocks-libev/arm64/include -I/usr/local/include -I/usr/local/opt/expat/include"
+# export CPPFLAGS="-I/Users/zack/Projects/Repositories/shadowsocks-libev/arm64/include -I/usr/local/include -I/usr/local/opt/expat/include"
 
 
 # export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
@@ -200,6 +200,25 @@ function brewRecovery() {
 }
 
 alias brewRecovery="brewRecovery"
+
+
+function brewFastGit() {
+    unset HOMEBREW_BOTTLE_DOMAIN
+    git -C "$(brew --repo)" remote set-url origin https://hub.fastgit.xyz/Homebrew/brew.git
+
+    # 以下针对 macOS 系统上的 Homebrew
+    BREW_TAPS="$(brew tap)"
+    for tap in core cask{,-fonts,-drivers,-versions}; do
+        if echo "$BREW_TAPS" | grep -qE "^homebrew/${tap}\$"; then
+            git -C "$(brew --repo homebrew/${tap})" remote set-url origin https://hub.fastgit.xyz/Homebrew/homebrew-${tap}.git
+        fi
+    done
+
+    # 重新设置 git 仓库 HEAD
+    brew update-reset
+}
+
+alias brewFastGit="brewFastGit"
 
 export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 # export PATH=$PATH:/usr/bin/python3
