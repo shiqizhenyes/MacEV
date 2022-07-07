@@ -143,6 +143,7 @@ alias flutterDev="flutterDev"
 
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
 export HOMEBREW_NO_AUTO_UPDATE=true
+export HOMEBREW_NO_INSTALL_CLEANUP=true
 
 # Homebrew 清华源
 function brewTsingHua() {
