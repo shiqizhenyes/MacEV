@@ -3,6 +3,8 @@
 # curl
 alias curl="curl -x http://127.0.0.1:1087"
 
+export PATH=/usr/local/sbin:$PATH
+
 # gem & ruby
 export GEM_HOME=$HOME/.gem
 export RUBY_VERSION=2.6.0
@@ -16,7 +18,6 @@ export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 
 # node
-export NODE_HOME=/usr/local/bin
 export NODE_MODULES=$HOME/.local/lib/node_modules/bin
 export PATH=$HOME/.local/lib/node_modules/bin:$PATH
 
