@@ -3,8 +3,6 @@
 # curl
 alias curl="curl -x http://127.0.0.1:1087"
 
-export PATH=/usr/local/sbin:$PATH
-
 # gem & ruby
 export GEM_HOME=$HOME/.gem
 export RUBY_VERSION=2.6.0
@@ -223,6 +221,14 @@ function brewFastGit() {
 }
 
 alias brewFastGit="brewFastGit"
+
+function kotlinPermission() {
+    for k in kapt kotlin kotlin-dce-js kotlinc kotlinc-js kotlinc-jvm; do
+        chmod +x ~/Library/Kotlin/kotlinc/bin/$k
+    done
+}
+
+alias kotlinPermission="kotlinPermission"
 
 export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 # export PATH=$PATH:/usr/bin/python3
