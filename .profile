@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/profile.pre.bash" ]] && . "$HOME/.fig/shell/profile.pre.bash"
+[[ -f "$HOME/.fig/shell/profile.pre.bash" ]] && builtin source "$HOME/.fig/shell/profile.pre.bash"
 # curl
 alias curl="curl -x http://127.0.0.1:1087"
 
@@ -105,11 +105,11 @@ export KOTLIN_HOME=$HOME/Library/Kotlin
 export PATH=$PATH:$KOTLIN_HOME/kotlinc/bin
 
 # android sdk
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export NDK_HOME=$ANDROID_HOME/ndk-bundle
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=$PATH:$ANDROID_HOME/emulator
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export ANDROID_NDK=$ANDROID_SDK/ndk/21.4.7075529
+export PATH=$PATH:$ANDROID_SDK/platform-tools
+export PATH=$PATH:$ANDROID_SDK/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_SDK/emulator
 
 # flutter
 export NO_PROXY=localhost,127.0.0.1,::1
@@ -118,27 +118,32 @@ export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 set PUB_HOSTED_URL=$PUB_HOSTED_URL
 set FLUTTER_STORAGE_BASE_URL=$FLUTTER_STORAGE_BASE_URL
-export PATH_TEMP=$PATH
 
-source $HOME/Projects/Repositories/MacEV/flutter_stable.sh
+export FLUTTER_SDK=$HOME/Library/Flutter
+export DART_SDK=$FLUTTER_SDK/bin/cache/dart-sdk
+export PATH=$PATH:$FLUTTER_SDK/bin:$DART_SDK/bin
 
-function flutterStable1_x() {
-    source $HOME/Projects/Repositories/MacEV/flutter_stable_1.x.sh
-}
+# export PATH_TEMP=$PATH
 
-alias flutterStable1_x="flutterStable1_x"
+# source $HOME/Projects/Repositories/MacEV/flutter_stable.sh
 
-function flutterStable() {
-    source $HOME/Projects/Repositories/MacEV/flutter_stable.sh
-}
+# function flutterStable1_x() {
+#     source $HOME/Projects/Repositories/MacEV/flutter_stable_1.x.sh
+# }
 
-alias flutterStable="flutterStable"
+# alias flutterStable1_x="flutterStable1_x"
 
-function flutterDev() {
-    source $HOME/Projects/Repositories/MacEV/flutter_dev.sh
-}
+# function flutterStable() {
+#     source $HOME/Projects/Repositories/MacEV/flutter_stable.sh
+# }
 
-alias flutterDev="flutterDev"
+# alias flutterStable="flutterStable"
+
+# function flutterDev() {
+#     source $HOME/Projects/Repositories/MacEV/flutter_dev.sh
+# }
+
+# alias flutterDev="flutterDev"
 
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
 export HOMEBREW_NO_AUTO_UPDATE=true
@@ -259,4 +264,4 @@ export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 # export PKG_CONFIG_PATH=/usr/local/opt/readline/lib/pkgconfig
 
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/profile.post.bash" ]] && . "$HOME/.fig/shell/profile.post.bash"
+[[ -f "$HOME/.fig/shell/profile.post.bash" ]] && builtin source "$HOME/.fig/shell/profile.post.bash"
